@@ -32,8 +32,8 @@ def threesum_cache(lst, sum=0):
 
   return list(result)
 
-
-lst = generate_random_list(15, 15)
-print("List:", lst)
-print("Brute:", sorted(threesum_brute(lst)))
-print("Cache:", sorted(threesum_cache(lst)))
+for test_number in range(3):
+  lst = generate_random_list(15, 15)
+  print("\nList", test_number + 1, ":", lst)
+  print("Brute:", sorted(threesum_brute(lst)))
+  print("Cache:", sorted(threesum_cache(lst)))
