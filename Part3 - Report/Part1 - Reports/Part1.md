@@ -110,18 +110,11 @@ Efter att $\log(t)$ plottats mot $\log(n)$ uppskattar lutningen från den linjä
 
 ## 4. Hur caching-metoden fungerar
 
-För varje första värde `value1` skapar algoritmen ett tomt set som kallas `cache`. Därefter undersöks varje senare värde `value2`, och värdet som behövs för att summan ska bli noll beräknas:
+Algoritmen går igenom listan och väljer ett `value1` i taget, från vänster till höger.
 
-```python
-value3 = sum - value1 - value2
-```
-
-Om `value3` redan finns i `cache` har en giltig triple hittats. Det aktuella `value2` läggs till i cache efter uppslagningen. Denna ordning är viktig eftersom den förhindrar att samma listposition används två gånger.
-
-Om exempelvis `value1 = -3` och `value2 = 0` är det önskade värdet:
-
-$$
-value3 = 0 - (-3) - 0 = 3
-$$
-
-Om `3` redan har setts läggs triplen `(-3, 0, 3)` till. Genom att sortera triplen och spara den i ett set räknas olika ordningar av samma värden som ett enda unikt triple set.
+- För varje `value1` skapas ett tomt set som kallas `cache`.
+- Sedan går algoritmen igenom resten av listan, ett `value2` i taget.
+- För varje `value2` räknas ut vilket tredje värde som skulle behövas för att summan ska bli noll: `value3 = sum - value1 - value2`.
+- Finns `value3` redan i `cache` har en giltig triple hittats.
+- Efter uppslagningen läggs `value2` till i `cache`, så att den finns tillgänglig för kommande jämförelser. Ordningen är viktig – den förhindrar att samma listposition används två gånger i samma triple.
+- Varje hittad triple sorteras och sparas i ett set, så att olika ordningar av samma tre värden bara räknas en gång.
