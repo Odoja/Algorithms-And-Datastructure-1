@@ -1,7 +1,4 @@
-import random
-
-def generate_random_list(list_lenght, list_size):
-  return [random.randint(-10 * list_size, 10 * list_size) for _ in range(list_lenght)]
+from helpers import generate_random_list
 
 def threesum_brute(list_, sum=0):
   length = len(list_)
@@ -34,3 +31,10 @@ def threesum_cache(list_, sum=0):
     # print("Result:", list(result))
 
   return list(result)
+
+for test in range(3):
+  random_list = generate_random_list(15, 15)
+
+  print("List:", random_list)
+  print("Brute:", sorted(threesum_brute(random_list)))
+  print("Cache:", sorted(threesum_cache(random_list)))
