@@ -3,7 +3,7 @@ import time
 
 import matplotlib.pyplot as plt
 
-from n2_algorithms import bubble_sort, insertion_sort, selection_sort
+from nlogn_algorithms import merge_sort, quick_sort
 from helpers import generate_random_list
 
 
@@ -31,7 +31,7 @@ def lin_reg(x, y):
 
 def run_experiment():
   sizes = [2000 + 500 * index for index in range(17)]
-  algorithms = [selection_sort, bubble_sort, insertion_sort]
+  algorithms = [merge_sort, quick_sort]
   runs = {algorithm.__name__: [] for algorithm in algorithms}
 
   for run_number in range(3):
@@ -63,9 +63,9 @@ def run_experiment():
   for algorithm in algorithms:
     name = algorithm.__name__
     plt.plot(sizes, averages[name], marker="o", label=name)
-  plt.xlabel("List sizes in range 100 to 800")
+  plt.xlabel("List sizes in range 2000 to 10000")
   plt.ylabel("Average time of 3 runs with random lists")
-  plt.title("Running times for O(n^2) algorithms")
+  plt.title("Running times for O(n*log(n)) algorithms")
   plt.legend()
   plt.grid()
 
@@ -80,7 +80,7 @@ def run_experiment():
 
   plt.xlabel("Log2 of list sizes")
   plt.ylabel("Log2 of sorting times")
-  plt.title("Log-log plots for O(n^2) algorithms")
+  plt.title("Log-log plots for O(n*log(n)) algorithms")
   plt.legend()
   plt.grid()
   plt.show()

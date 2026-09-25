@@ -110,8 +110,7 @@ Efter att $\log(t)$ plottats mot $\log(n)$ uppskattar lutningen från den linjä
 
 ## 4. Hur caching-metoden fungerar
 
-Algoritmen går igenom listan och väljer ett `value1` i taget, från vänster till höger.
-
+- Algoritmen går igenom listan och väljer ett `value1` i taget, från vänster till höger.
 - För varje `value1` skapas ett tomt set som kallas `cache`.
 - Sedan går algoritmen igenom resten av listan, ett `value2` i taget.
 - För varje `value2` räknas ut vilket tredje värde som skulle behövas för att summan ska bli noll: `value3 = sum - value1 - value2`.
