@@ -27,9 +27,47 @@ def bucket_sort(list_):
   # "Empties" (removes) the buckets and places them in an ordered list.
   return [num for bucket in buckets for num in bucket]
 
+def radix_sort(list_):
+   # Check if list is empty
+   if not list_:
+    return list_
 
-def radix_sort():
-   pass
+   # Split negative and positive numbers into separate lists.
+   negatives = [-number for number in list_ if number < 0]
+   positives = [number for number in list_ if number >= 0]
+
+   sorted_negatives_list = radix_sort_positive(negatives)
+   sorted_positives_list = radix_sort_positive(positives)
+
+   # Reverse the sorted negative list and join it with the sorted positive list.
+   return [-number for number in reversed(sorted_negatives_list)] + sorted_positives_list
+
+def radix_sort_positive(list_):
+   # Check if list is empty
+   if not list_:
+    return list_
+   highest_value_number = max(list_)
+   exponent = 1
+
+   while highest_value_number // exponent > 0:
+       list_ = counting_sort_by_digit(list_, exponent)
+       exponent *= 10
+
+   return list_
+
+def counting_sort_by_digit(list_, exponent):
+  # One bucket per possible number
+  buckets = [[] for _ in range(10)]
+
+  # Places each number in the list into a bucket based on its value.
+  # Ex. 50 // 10 = 5 -> 5 % 10 = 5 -> placed in bucket index 5.
+  for number in list_:
+    index = (number // exponent) % 10
+    buckets[index].append(number)
+
+  # "Empties" (removes) the buckets and places them in an ordered list.
+  return [num for bucket in buckets for num in bucket]
+
 
 list_ = generate_random_list(10, 10)
 sorted_list = bucket_sort(list_)
