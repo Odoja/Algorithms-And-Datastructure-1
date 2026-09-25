@@ -28,3 +28,17 @@ def bubble_sort(list_):
       break
 
 def insertion_sort(list_):
+  length = len(list_)
+
+  # Iterate through the list starting from the second element, treating the first element as sorted.
+  for current_index in range(1, length):
+    current_value = list_[current_index]
+    position = current_index
+
+    # Shift elements in the sorted part of the list to the right, as long as they're greater than the current value.
+    while position > 0 and list_[position - 1] > current_value:
+      list_[position] = list_[position - 1]
+      position -= 1
+
+    # Insert the current value into the correct position in the sorted part of the list.
+    list_[position] = current_value
