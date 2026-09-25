@@ -8,9 +8,9 @@ def selection_sort(list_):
     for compare_index in range(current_index + 1, length):
       if list_[compare_index] < list_[index_of_smallest_value]:
         index_of_smallest_value = compare_index
+        
     # Swap the smallest value into the current index position
     list_[current_index], list_[index_of_smallest_value] = list_[index_of_smallest_value], list_[current_index]
-
 
 def bubble_sort(list_):
   length = len(list_)
@@ -21,6 +21,7 @@ def bubble_sort(list_):
     # Compare neighboring values in the unsorted part of the list.
     for current_index in range(length - iteration_count - 1):
       if list_[current_index] > list_[current_index + 1]:
+
         # If the current element is greater than the next element, swap places
         list_[current_index], list_[current_index + 1] = list_[current_index + 1], list_[current_index]
         swapped = True
