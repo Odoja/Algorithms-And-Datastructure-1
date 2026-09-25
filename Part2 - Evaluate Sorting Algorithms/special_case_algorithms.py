@@ -67,8 +67,3 @@ def counting_sort_by_digit(list_, exponent):
 
   # "Empties" (removes) the buckets and places them in an ordered list.
   return [num for bucket in buckets for num in bucket]
-
-
-list_ = generate_random_list(10, 10)
-sorted_list = bucket_sort(list_)
-print(sorted_list)
